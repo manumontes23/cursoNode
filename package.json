@@ -1,0 +1,24 @@
+{
+  "name": "cursonode",
+  "version": "1.0.0",
+  "description": "primera entrega del curso de fundamentos de node.js",
+  "main": "index.js",
+  "dependencies": {
+    "nodemon": "^1.19.0",
+    "yargs": "^13.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manumontes23/cursoNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manumontes23/cursoNode/issues"
+  },
+  "homepage": "https://github.com/manumontes23/cursoNode#readme"
+}
