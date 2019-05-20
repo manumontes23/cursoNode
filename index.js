@@ -47,10 +47,10 @@ function temporizador(segundos){
 }
 
 let crearArchivo=(curso)=>{
-    let texto="id: "+curso.id+" nombre: "+curso.nombre+" \n estudiante: "+argv.c+" "+argv.n
+    let texto='Curso: \n id: '+curso.id+'\n nombre: '+curso.nombre+'\n Duracion: '+curso.duracion+' horas \n valor: '+curso.valor+" \n estudiante: \ncedula:"+argv.c+" \nnombre: "+argv.n
     fs.writeFile('preMatricula.txt',texto,(err)=>{
         if(err) throw (err);
-        console.log("el estudiante "+argv.c+" "+argv.n+' ha sido Prematriculado')
+        console.log("el estudiante "+argv.c+" "+argv.n+' ha sido Prematriculado en el curso de '+curso.nombre)
     })
 }
 
