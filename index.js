@@ -1,16 +1,30 @@
-const {curso1,curso2,curso3} = require('./cursos.js')
+const cursos = require('./cursos.js')
 const fs= require('fs')
 
 const opciones={
-    inscribir:{
+    cedula:{
+        demand:true,
+        alias:'c'
+    },
+    nombre:{
+        demand:true,
+        alias:'n'
+    },
+    idCurso:{
+        default:0,
         alias:'i'
     },
-    ver:{
-        alias:'v'
-
+    opcion:{
+        default:'v',
+        alias:'o'
     }
 }
-const argv = require('yargs').argv
+
+let {curso1,curso2,curso3}=cursos
+
+const argv = require('yargs')
+    .command('prematricula','ver cursos',opciones)
+    .argv
 /**
  * funcion que le presenta al estudiante 
  */
@@ -32,14 +46,35 @@ function temporizador(segundos){
 
 }
 
-let crearArchivo=()=>{
+let crearArchivo=(curso)=>{
+    let texto="id: "+curso.id+" nombre: "+curso.nombre+" \n estudiante: "+argv.c+" "+argv.n
     fs.writeFile('preMatricula.txt',texto,(err)=>{
         if(err) throw (err);
-        console.log('se ha creado el archivo')
+        console.log("el estudiante "+argv.c+" "+argv.n+' ha sido Prematriculado')
     })
 }
 
+let principal=()=>{
+    if(argv.o=='inscribir'){
+        if(argv.i==1||argv.i==2||argv.i==3){
+            if(argv.i==1){
+                crearArchivo(curso1)
+                console.log('id: '+curso1.id+'\n nombre: '+curso1.nombre+'\n Duracion: '+curso1.duracion+' horas \n valor: '+curso1.valor)
+            }else if(argv.id==2){
+                crearArchivo(curso2)
+                console.log('id: '+curso2.id+'\n nombre: '+curso2.nombre+'\n Duracion: '+curso2.duracion+' horas \n valor: '+curso2.valor)
+            }else{
+                crearArchivo(curso3)
+                console.log('id: '+curso3.id+'\n nombre: '+curso3.nombre+'\n Duracion: '+curso3.duracion+' horas \n valor: '+curso3.valor)
+            }
 
+        }else{
+            console.log('id no valida, grupo no encontrado')
+        }
+    }else{
+        presentar()
+    }
+}
 
-presentar()
+principal()
 
